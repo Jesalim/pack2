@@ -60,7 +60,7 @@ const NewCourierModal = (props) => {
       pageSize: 'A7',
       header: [
         {
-          text: 'Courier TnM',
+          text: 'Dropoff',
           margin: 5,
           fontSize: '10',
           bold: true,
@@ -75,7 +75,7 @@ const NewCourierModal = (props) => {
           decoration: 'underline',
         },
         {
-          text: `Name: ${data.receiverDetails.name}\nPhone: ${data.receiverDetails.phoneNumber}\nEmail: ${data.receiverDetails.email}\nAddress: ${data.receiverDetails.location}, ${data.receiverDetails.city}, ${data.receiverDetails.state}, ${data.receiverDetails.country}, ${data.receiverDetails.pincode}`,
+          text: `Name: ${data.receiverDetails.name}\nPhone: ${data.receiverDetails.phone}\nEmail: ${data.receiverDetails.email}\nAddress: ${data.receiverDetails.adress}`,
           fontSize: '5',
           marginTop: 2,
         },
@@ -87,7 +87,7 @@ const NewCourierModal = (props) => {
           marginTop: 5,
         },
         {
-          text: `Name: ${data.senderDetails.name}\nPhone: ${data.senderDetails.phoneNumber}\nEmail: ${data.senderDetails.email}\nAddress: ${data.senderDetails.location}, ${data.senderDetails.city}, ${data.senderDetails.state}, ${data.senderDetails.country}, ${data.senderDetails.pincode}`,
+          text: `Name: ${data.receiverDetails.name}\nPhone: ${data.receiverDetails.phone}\nEmail: ${data.receiverDetails.email}\nAddress: ${data.receiverDetails.adress}`,
           fontSize: '5',
           marginTop: 2,
         },
@@ -116,21 +116,13 @@ const NewCourierModal = (props) => {
         name: formData.receiverName,
         phoneNumber: formData.receiverPhone,
         email: formData.receiverEmail,
-        location: formData.receiverLocation,
-        city: formData.receiverCity,
-        state: formData.receiverState,
-        country: formData.receiverCountry,
-        pincode: formData.receiverPinCode,
+        address: formData.receiverAddress,
       },
       senderDetails: {
         name: formData.senderName,
         phoneNumber: formData.senderPhone,
         email: formData.senderEmail,
-        location: formData.senderLocation,
-        city: formData.senderCity,
-        state: formData.senderState,
-        country: formData.senderCountry,
-        pincode: formData.senderPinCode,
+        address: formData.senderAddress,
       },
       courierDetails: {
         packageName: formData.packageName,
@@ -230,20 +222,12 @@ const NewCourierModal = (props) => {
     receiverName: '',
     receiverEmail: '',
     receiverPhone: '',
-    receiverLocation: '',
-    receiverCountry: '',
-    receiverState: '',
-    receiverCity: '',
-    receiverPinCode: '',
+    receiverAddress: '',
 
     senderName: '',
     senderEmail: '',
     senderPhone: '',
-    senderLocation: '',
-    senderCountry: '',
-    senderState: '',
-    senderCity: '',
-    senderPinCode: '',
+    senderAddress: '',
 
     packageName: '',
     packageWeight: '',
@@ -258,11 +242,7 @@ const NewCourierModal = (props) => {
       .string()
       .matches(phoneRegExp, 'Phone number is not valid')
       .required('required'),
-    receiverLocation: yup.string().required('required'),
-    receiverCountry: yup.string().required('required'),
-    receiverState: yup.string().required('required'),
-    receiverCity: yup.string().required('required'),
-    receiverPinCode: yup.number().required('required'),
+    receiverAddress: yup.string().required('required'),
 
     senderName: yup.string().required('required'),
     senderEmail: yup.string().email('invalid email').required('required'),
@@ -270,11 +250,7 @@ const NewCourierModal = (props) => {
       .string()
       .matches(phoneRegExp, 'Phone number is not valid')
       .required('required'),
-    senderLocation: yup.string().required('required'),
-    senderCountry: yup.string().required('required'),
-    senderState: yup.string().required('required'),
-    senderCity: yup.string().required('required'),
-    senderPinCode: yup.number().required('required'),
+    senderAddress: yup.string().required('required'),
 
     packageName: yup.string().required('required'),
     packageWeight: yup.string().required('required'),
@@ -343,8 +319,8 @@ const NewCourierModal = (props) => {
                       type='submit'
                       variant='contained'
                       sx={{
-                        color: 'white',
-                        backgroundColor: 'black',
+                        color: '#cc3c2f',
+                        backgroundColor: '#cc3c2f',
                         borderRadius: '20px',
                       }}
                     >
@@ -371,7 +347,7 @@ const NewCourierModal = (props) => {
                 handleSubmit,
               }) => (
                 <form onSubmit={handleSubmit}>
-                  <Typography sx={{ backgroundColor: 'yellow' }}>
+                  <Typography sx={{ backgroundColor: '#cc3c2f' }}>
                     Package Details
                   </Typography>
                   <Box
@@ -407,7 +383,7 @@ const NewCourierModal = (props) => {
                     />
                   </Box>
 
-                  <Typography sx={{ backgroundColor: 'yellow' }} mt={2}>
+                  <Typography sx={{ backgroundColor: '#cc3c2f' }} mt={2}>
                     Receiver's Details
                   </Typography>
                   <Box
@@ -461,78 +437,20 @@ const NewCourierModal = (props) => {
                       label='Address'
                       onBlur={handleBlur}
                       onChange={handleChange}
-                      name='receiverLocation'
-                      value={values.receiverLocation}
+                      name='receiverAddress'
+                      value={values.receiverAddress}
                       error={
-                        !!touched.receiverLocation && !!errors.receiverLocation
+                        !!touched.receiverAddress && !!errors.receiverAddress
                       }
                       helperText={
-                        touched.receiverLocation && errors.receiverLocation
+                        touched.receiverAddress && errors.receiverAddress
                       }
                       sx={{ gridColumn: 'span 4' }}
                     />
-                    <TextField
-                      fullWidth
-                      variant='standard'
-                      type='text'
-                      label='Country'
-                      onBlur={handleBlur}
-                      onChange={handleChange}
-                      name='receiverCountry'
-                      value={values.receiverCountry}
-                      error={
-                        !!touched.receiverCountry && !!errors.receiverCountry
-                      }
-                      helperText={
-                        touched.receiverCountry && errors.receiverCountry
-                      }
-                      sx={{ gridColumn: 'span 1' }}
-                    />
-                    <TextField
-                      fullWidth
-                      variant='standard'
-                      type='text'
-                      label='State'
-                      onBlur={handleBlur}
-                      onChange={handleChange}
-                      name='receiverState'
-                      value={values.receiverState}
-                      error={!!touched.receiverState && !!errors.receiverState}
-                      helperText={touched.receiverState && errors.receiverState}
-                      sx={{ gridColumn: 'span 1' }}
-                    />
-                    <TextField
-                      fullWidth
-                      variant='standard'
-                      type='text'
-                      label='City'
-                      onBlur={handleBlur}
-                      onChange={handleChange}
-                      name='receiverCity'
-                      value={values.receiverCity}
-                      error={!!touched.receiverCity && !!errors.receiverCity}
-                      helperText={touched.receiverCity && errors.receiverCity}
-                      sx={{ gridColumn: 'span 1' }}
-                    />
-                    <TextField
-                      fullWidth
-                      variant='standard'
-                      type='text'
-                      label='Pincode'
-                      onBlur={handleBlur}
-                      onChange={handleChange}
-                      name='receiverPinCode'
-                      value={values.receiverPinCode}
-                      error={
-                        !!touched.receiverPinCode && !!errors.receiverPinCode
-                      }
-                      helperText={
-                        touched.receiverPinCode && errors.receiverPinCode
-                      }
-                      sx={{ gridColumn: 'span 1' }}
-                    />
+                    
+                  
                   </Box>
-                  <Typography sx={{ backgroundColor: 'yellow' }} mt={2}>
+                  <Typography sx={{ backgroundColor: '#cc3c2f' }} mt={2}>
                     Sender's Details
                   </Typography>
                   <Box
@@ -586,68 +504,17 @@ const NewCourierModal = (props) => {
                       label='Address'
                       onBlur={handleBlur}
                       onChange={handleChange}
-                      name='senderLocation'
-                      value={values.senderLocation}
+                      name='senderAddress'
+                      value={values.senderAddress}
                       error={
-                        !!touched.senderLocation && !!errors.senderLocation
+                        !!touched.senderAddress && !!errors.senderAddress
                       }
                       helperText={
-                        touched.senderLocation && errors.senderLocation
+                        touched.senderAddress && errors.senderAddress
                       }
                       sx={{ gridColumn: 'span 4' }}
                     />
-                    <TextField
-                      fullWidth
-                      variant='standard'
-                      type='text'
-                      label='Country'
-                      onBlur={handleBlur}
-                      onChange={handleChange}
-                      name='senderCountry'
-                      value={values.senderCountry}
-                      error={!!touched.senderCountry && !!errors.senderCountry}
-                      helperText={touched.senderCountry && errors.senderCountry}
-                      sx={{ gridColumn: 'span 1' }}
-                    />
-                    <TextField
-                      fullWidth
-                      variant='standard'
-                      type='text'
-                      label='State'
-                      onBlur={handleBlur}
-                      onChange={handleChange}
-                      name='senderState'
-                      value={values.senderState}
-                      error={!!touched.senderState && !!errors.senderState}
-                      helperText={touched.senderState && errors.senderState}
-                      sx={{ gridColumn: 'span 1' }}
-                    />
-                    <TextField
-                      fullWidth
-                      variant='standard'
-                      type='text'
-                      label='City'
-                      onBlur={handleBlur}
-                      onChange={handleChange}
-                      name='senderCity'
-                      value={values.senderCity}
-                      error={!!touched.senderCity && !!errors.senderCity}
-                      helperText={touched.senderCity && errors.senderCity}
-                      sx={{ gridColumn: 'span 1' }}
-                    />
-                    <TextField
-                      fullWidth
-                      variant='standard'
-                      type='text'
-                      label='Pincode'
-                      onBlur={handleBlur}
-                      onChange={handleChange}
-                      name='senderPinCode'
-                      value={values.senderPinCode}
-                      error={!!touched.senderPinCode && !!errors.senderPinCode}
-                      helperText={touched.senderPinCode && errors.senderPinCode}
-                      sx={{ gridColumn: 'span 1' }}
-                    />
+                    
                   </Box>
                   <Box display='flex' justifyContent='end' mt='20px'>
                     <Button

@@ -71,16 +71,16 @@ const Profile = () => {
                 variant='filled'
                 type='text'
                 disabled={true}
-                label='Registration Number'
+                label='First Name'
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.registrationNumber}
-                name='registrationNumber'
+                name='First Name'
                 error={
-                  !!touched.registrationNumber && !!errors.registrationNumber
+                  !!touched.firstName && !!errors.firstName
                 }
                 helperText={
-                  touched.registrationNumber && errors.registrationNumber
+                  touched.firstName && errors.firstName
                 }
                 sx={{ gridColumn: 'span 2' }}
               />
@@ -88,39 +88,39 @@ const Profile = () => {
                 fullWidth
                 variant='filled'
                 type='text'
-                label='Email'
+                label='Last Name'
                 onBlur={handleBlur}
                 onChange={handleChange}
-                value={values.contactEmail}
-                name='contactEmail'
-                error={!!touched.contactEmail && !!errors.contactEmail}
-                helperText={touched.contactEmail && errors.contactEmail}
+                value={values.lastName}
+                name='Last Name'
+                error={!!touched.lastName && !!errors.lastName}
+                helperText={touched.lastName && errors.lastName}
                 sx={{ gridColumn: 'span 2' }}
               />
               <TextField
                 fullWidth
                 variant='filled'
                 type='text'
-                label='Contact Number'
+                label='Pjone Number'
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.contactNumber}
-                name='contactNumber'
-                error={!!touched.contactNumber && !!errors.contactNumber}
-                helperText={touched.contactNumber && errors.contactNumber}
+                name='phoneNumber'
+                error={!!touched.phoneNumber && !!errors.phoneNumberNumber}
+                helperText={touched.phoneNumber && errors.phoneNumber}
                 sx={{ gridColumn: 'span 2' }}
               />
               <TextField
                 fullWidth
                 variant='filled'
                 type='text'
-                label='Location'
+                label='Region'
                 onBlur={handleBlur}
                 onChange={handleChange}
-                value={values.location}
+                value={values.region}
                 name='location'
-                error={!!touched.location && !!errors.location}
-                helperText={touched.location && errors.location}
+                error={!!touched.region && !!errors.region}
+                helperText={touched.region && errors.region}
                 sx={{ gridColumn: 'span 4' }}
               />
               <TextField
@@ -136,45 +136,8 @@ const Profile = () => {
                 helperText={touched.country && errors.country}
                 sx={{ gridColumn: 'span 1' }}
               />
-              <TextField
-                fullWidth
-                variant='filled'
-                type='text'
-                label='State'
-                onBlur={handleBlur}
-                onChange={handleChange}
-                value={values.state}
-                name='state'
-                error={!!touched.state && !!errors.state}
-                helperText={touched.state && errors.state}
-                sx={{ gridColumn: 'span 1' }}
-              />
-              <TextField
-                fullWidth
-                variant='filled'
-                type='text'
-                label='City'
-                onBlur={handleBlur}
-                onChange={handleChange}
-                value={values.city}
-                name='city'
-                error={!!touched.city && !!errors.city}
-                helperText={touched.city && errors.city}
-                sx={{ gridColumn: 'span 1' }}
-              />
-              <TextField
-                fullWidth
-                variant='filled'
-                type='text'
-                label='Pincode'
-                onBlur={handleBlur}
-                onChange={handleChange}
-                value={values.pinCode}
-                name='pinCode'
-                error={!!touched.pinCode && !!errors.pinCode}
-                helperText={touched.pinCode && errors.pinCode}
-                sx={{ gridColumn: 'span 1' }}
-              />
+             
+              
             </Box>
             <Box display='flex' justifyContent='end' mt='20px'>
               <Button

@@ -161,7 +161,7 @@ const createPdf = (data) => {
     pageSize: 'A7',
     header: [
       {
-        text: 'Courier TnM',
+        text: 'Dropoff',
         margin: 5,
         fontSize: '10',
         bold: true,
@@ -176,7 +176,7 @@ const createPdf = (data) => {
         decoration: 'underline',
       },
       {
-        text: `Name: ${data.receiver.name}\nPhone: ${data.receiver.phoneNumber}\nEmail: ${data.receiver.email}\nAddress: ${data.receiver.location}, ${data.receiver.city}, ${data.receiver.state}, ${data.receiver.country}, ${data.receiver.pincode}`,
+        text: `Name: ${data.receiver.name}\nPhone: ${data.receiver.phoneNumber}\nEmail: ${data.receiver.email}\nAddress: ${data.receiver.address}`,
         fontSize: '5',
         marginTop: 2,
       },
@@ -188,7 +188,7 @@ const createPdf = (data) => {
         marginTop: 5,
       },
       {
-        text: `Name: ${data.sender.name}\nPhone: ${data.sender.phoneNumber}\nEmail: ${data.sender.email}\nAddress: ${data.sender.location}, ${data.sender.city}, ${data.sender.state}, ${data.sender.country}, ${data.sender.pincode}`,
+        text: `Name: ${data.sender.name}\nPhone: ${data.sender.phoneNumber}\nEmail: ${data.sender.email}\nAddress: ${data.sender.address}`,
         fontSize: '5',
         marginTop: 2,
       },
@@ -365,26 +365,8 @@ const Couriers = () => {
               }}
             />
           </Box>
-          <Box>
-            <TextField
-              id='startDate'
-              label='Start Date'
-              type='date'
-              variant='standard'
-              onChange={dateSearch}
-              InputLabelProps={{ shrink: true }}
-            />
-          </Box>
-          <Box>
-            <TextField
-              id='endDate'
-              label='End Date'
-              type='date'
-              variant='standard'
-              onChange={dateSearch}
-              InputLabelProps={{ shrink: true }}
-            />
-          </Box>
+          
+         
         </Box>
         <Box>
           <Button
@@ -438,11 +420,7 @@ const Couriers = () => {
                       <TableCell>
                         {row.status[`${state.auth.department._id}`]}
                       </TableCell>
-                      <TableCell>
-                        <Moment format='DD/MM/YYYY hh:mm a'>
-                          {row.updatedDate}
-                        </Moment>
-                      </TableCell>
+            
                       <TableCell>
                         <IconButton onClick={() => createPdf(row)}>
                           <DescriptionOutlinedIcon />

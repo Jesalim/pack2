@@ -115,7 +115,7 @@ const Dashboard = () => {
           <Box mx={5} my={2} display={'flex'} alignItems='center'>
             <FunctionsIcon
               sx={{
-                backgroundColor: 'yellow',
+                backgroundColor: '#cc3c2f',
                 borderRadius: '50px',
                 fontSize: '30pt',
                 color: 'white',

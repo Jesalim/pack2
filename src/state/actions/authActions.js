@@ -3,7 +3,7 @@ import { apiHost } from '../../apiLoc'
 
 export const login = (credential) => {
   return (dispatch) => {
-    const url = `https://data-j87g.onrender.com`
+    const url = `${apiHost}/api/departments/loginDepartment`
     fetch(url, {
       method: 'post',
       body: JSON.stringify({
@@ -62,7 +62,7 @@ export const login = (credential) => {
 
 export const register = (details) => {
   return (dispatch) => {
-    const url = ``
+    const url = `${apiHost}/api/departments/addDepartment`
     fetch(url, {
       method: 'post',
       body: JSON.stringify({
@@ -116,7 +116,7 @@ export const register = (details) => {
 
 export const getDepartmentInfo = (accessToken) => {
   return (dispatch) => {
-    const url = `https://data-j87g.onrender.com`
+    const url = `${apiHost}/api/departments/getDepartmentInfo`
     fetch(url, {
       method: 'get',
       headers: {
@@ -197,7 +197,7 @@ export const getDepartmentInfo = (accessToken) => {
 
 export const updateDepartmentInfo = (accessToken, details) => {
   return (dispatch) => {
-    const url = ``
+    const url = `${apiHost}/api/departments/updateDepartmentInfo`
     fetch(url, {
       method: 'PATCH',
       body: JSON.stringify({
