@@ -64,8 +64,8 @@ const Track = () => {
         <Box mr='10px'>
           {!token && (
             <img
-              src='https://i.ibb.co/svJ55Td/Courier-Tn-M-removebg-preview.png'
-              alt='Courier-Tn-M'
+              src=''
+              alt=''
               height={75}
             />
           )}
@@ -74,10 +74,10 @@ const Track = () => {
           required
           value={refId}
           onChange={(event) => setRefId(event.target.value)}
-          label='Reference ID'
+          label='Package ID'
           variant='standard'
           fullWidth
-          placeholder='Enter reference id to track courier'
+          placeholder='Enter package id to track courier'
         />
         <IconButton
           onClick={trackCourier}

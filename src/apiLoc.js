@@ -1,1 +1,1 @@
-export const apiHost = ''
+export const apiHost = 'https://data-j87g.onrender.com'

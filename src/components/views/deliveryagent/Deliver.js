@@ -69,7 +69,7 @@ const Delivery = () => {
           required
           value={refId}
           onChange={(event) => setRefId(event.target.value)}
-          label='Courier Reference ID'
+          label='Package ID'
           variant='standard'
           fullWidth
           placeholder='Enter courier reference id to mark as delivered'

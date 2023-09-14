@@ -5,10 +5,10 @@ import SignUp from './SignUp'
 // import './styles/auth.css'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import { Box, Button, Grid } from '@mui/material'
-import { Link, Navigate, Route, Routes } from 'react-router-dom'
+import { Box, Grid } from '@mui/material'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import Track from '../views/department/Track'
-import LoginDeliveryAgent from './LoginDeliveryAgent'
+
 
 const Auth = () => {
   const auth = useSelector((state) => state.auth)
@@ -25,7 +25,7 @@ const Auth = () => {
           path='/auth'
           element={
             <Box>
-              <Box display={'flex'} justifyContent='end' marginRight={3}>
+              {/* <Box display={'flex'} justifyContent='end' marginRight={3}>
                 <Link to='/auth/deliveryAgent'>
                   <Button
                     variant='contained'
@@ -39,7 +39,7 @@ const Auth = () => {
                     I'm a delivery agent
                   </Button>
                 </Link>
-              </Box>
+              </Box> */}
               <Grid container>
                 {/* Login or Signup */}
                 <Grid item xs={6}>
@@ -57,19 +57,15 @@ const Auth = () => {
                 {/* Intro Landing */}
                 <Grid item xs={6} marginTop={12}>
                   <img
-                    src='https://i.ibb.co/svJ55Td/Courier-Tn-M-removebg-preview.png'
-                    alt='Courier-Tn-M'
+                    src=''
+                    alt=''
                   />
                 </Grid>
               </Grid>
             </Box>
           }
         ></Route>
-        <Route
-          exact
-          path='/auth/deliveryAgent'
-          element={<LoginDeliveryAgent />}
-        />
+
         <Route exact path='/track/courier' element={<Track />} />
 
         <Route path='*' element={<Navigate to='/auth' replace />} />

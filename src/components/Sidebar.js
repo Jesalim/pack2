@@ -40,7 +40,6 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
 }
 
 const Sidebar = () => {
-  const department = useSelector((state) => state.auth.department)
   const deliveryAgent = useSelector((state) => state.auth.deliveryAgent)
   const currentLoc = useLocation().pathname.split('/')[1]
 
@@ -99,21 +98,8 @@ const Sidebar = () => {
             </MenuItem>
 
             <Box mb='25px'>
-              <Box textAlign='center'>
-                <Typography
-                  variant='h5'
-                  fontWeight='bold'
-                  sx={{ m: '10px 0 0 0', color: 'black' }}
-                >
-                  {deliveryAgent ? deliveryAgent.name : department.name}
-                </Typography>
-                <Typography>
-                  {deliveryAgent
-                    ? `Phone Number # ${deliveryAgent.phoneNumber}`
-                    : `Registration Number # ${department.registrationNumber}`}
-                </Typography>
+  
               </Box>
-            </Box>
             {deliveryAgent ? (
               <Box>
                 <Box paddingLeft={'10%'} marginRight={2} marginTop={1}>

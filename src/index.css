@@ -27,7 +27,7 @@ body,
 }
 
 ::-webkit-scrollbar-track {
-  background: #e0e0e0;
+  background: #b48484;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -37,3 +37,9 @@ body,
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+/* External CSS file (styles.css) */
+body {
+  background-color: #cc3c2f;
+}
+

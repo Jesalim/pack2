@@ -5,7 +5,6 @@ import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField'
 import Grid from '@mui/material/Grid'
 import Button from '@mui/material/Button'
-import Typography from '@mui/material/Typography'
 
 import { useDispatch } from 'react-redux'
 import { register } from '../../state/actions/authActions'
@@ -16,27 +15,23 @@ function SignUp(prop) {
   const handleSubmit = (event) => {
     event.preventDefault()
     const data = new FormData(event.currentTarget)
+    const firstname = data.get('firstname')
+    const lastname = data.get('lastname')
     const email = data.get('email')
     const password = data.get('password')
-    const departmentName = data.get('departmentName')
-    const registrationNumber = data.get('registrationNumber')
-    const phone = data.get('phone')
+    const phone_number = data.get('phone_number')
     const address = data.get('address')
-    const city = data.get('city')
-    const state = data.get('state')
+    const region = data.get('region')
     const country = data.get('country')
-    const pinCode = data.get('pincode')
 
     const details = {
-      name: departmentName,
-      country: country,
-      pinCode: pinCode,
-      state: state,
-      city: city,
+      firstname: firstname,
+      lastname: lastname,
       password: password,
-      contactNumber: phone,
+      phone: phone_number,
       contactEmail: email,
-      registrationNumber: registrationNumber,
+      country: country,
+      region: region,
       location: address,
     }
 
@@ -59,27 +54,31 @@ function SignUp(prop) {
         <div style={{color:"grey",fontSize:"10pt"}}>Register into the world of automated deliveries</div>
         <Box component='form' onSubmit={handleSubmit} sx={{ mt: 3 }}>
           <Grid container spacing={2}>
-            <Grid item xs={12}>
-              <TextField
-                name='departmentName'
-                variant='standard'
-                required
-                fullWidth
-                id='departmentName'
-                label='Department Name'
-                autoFocus
-              />
-            </Grid>
-            <Grid item xs={12}>
+
+          <Grid item xs={12} sm={6}>
               <TextField
                 required
-                variant='standard'
                 fullWidth
-                id='registrationNumber'
-                label='Registration Number'
-                name='registrationNumber'
+                variant='standard'
+                id='firstname'
+                label='First Name'
+                name='firstname'
+                autoComplete='firstname'
               />
             </Grid>
+
+            <Grid item xs={12} sm={6}>
+              <TextField
+                required
+                fullWidth
+                variant='standard'
+                id='lastname'
+                label='Last Name'
+                name='lastname'
+                autoComplete='lastname'
+              />
+            </Grid>
+
             <Grid item xs={12} sm={6}>
               <TextField
                 required
@@ -96,9 +95,9 @@ function SignUp(prop) {
                 required
                 fullWidth
                 variant='standard'
-                name='phone'
-                label='Phone'
-                id='phone'
+                name='phone_number'
+                label='Phone_number'
+                id='phone_number'
               />
             </Grid>
             <Grid item xs={12}>
@@ -126,32 +125,13 @@ function SignUp(prop) {
                 required
                 variant='standard'
                 fullWidth
-                name='state'
-                label='State'
-                id='state'
+                name='region'
+                label='region'
+                id='region'
               />
             </Grid>
-            <Grid item xs={12} sm={3}>
-              <TextField
-                required
-                variant='standard'
-                fullWidth
-                name='city'
-                label='City'
-                id='city'
-              />
-            </Grid>
-
-            <Grid item xs={12} sm={3}>
-              <TextField
-                required
-                fullWidth
-                variant='standard'
-                name='pincode'
-                label='Pincode'
-                id='pincode'
-              />
-            </Grid>
+            
+           
             <Grid item xs={12}>
               <TextField
                 required
@@ -188,7 +168,7 @@ function SignUp(prop) {
                   borderRadius: '20px',
                   color: 'black',
                 }}
-                onClick={() => prop.handleAuthToggle(false)}
+                 onClick={() => prop.handleAuthToggle(false)}
               >
                 Already have an account? Login
               </Button>

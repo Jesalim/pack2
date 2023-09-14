@@ -3,11 +3,11 @@ import { apiHost } from '../../apiLoc'
 
 export const login = (credential) => {
   return (dispatch) => {
-    const url = `${apiHost}/api/departments/loginDepartment`
+    const url = `https://data-j87g.onrender.com`
     fetch(url, {
       method: 'post',
       body: JSON.stringify({
-        registrationNumber: credential.registrationNumber,
+        email: credential.email,
         password: credential.password,
       }),
       headers: {
@@ -62,20 +62,18 @@ export const login = (credential) => {
 
 export const register = (details) => {
   return (dispatch) => {
-    const url = `${apiHost}/api/departments/addDepartment`
+    const url = ``
     fetch(url, {
       method: 'post',
       body: JSON.stringify({
-        name: details.name,
+        firstname: details.first_name,
+        lastname: details.last_name,
         country: details.country,
-        pinCode: details.pinCode,
-        state: details.state,
         city: details.city,
+        address: details.address,
         password: details.password,
-        contactNumber: details.contactNumber,
+        phoneNumber: details.phone_number,
         contactEmail: details.contactEmail,
-        registrationNumber: details.registrationNumber,
-        location: details.location,
       }),
       headers: {
         'Content-Type': 'application/json',
@@ -118,7 +116,7 @@ export const register = (details) => {
 
 export const getDepartmentInfo = (accessToken) => {
   return (dispatch) => {
-    const url = `${apiHost}/api/departments/getDepartmentInfo`
+    const url = `https://data-j87g.onrender.com`
     fetch(url, {
       method: 'get',
       headers: {
@@ -199,19 +197,18 @@ export const getDepartmentInfo = (accessToken) => {
 
 export const updateDepartmentInfo = (accessToken, details) => {
   return (dispatch) => {
-    const url = `${apiHost}/api/departments/updateDepartmentInfo`
+    const url = ``
     fetch(url, {
       method: 'PATCH',
       body: JSON.stringify({
-        name: details.name,
+        firstname: details.first_name,
+        lastname: details.last_name,
         country: details.country,
-        pinCode: details.pinCode,
-        state: details.state,
         city: details.city,
+        address: details.address,
         password: details.password,
-        contactNumber: details.contactNumber,
+        phoneNumber: details.phone_number,
         contactEmail: details.contactEmail,
-        location: details.location,
       }),
       headers: {
         'Content-Type': 'application/json',
@@ -289,64 +286,6 @@ export const updateDepartmentInfo = (accessToken, details) => {
   }
 }
 
-export const loginDeliveryAgent = (credential) => {
-  return (dispatch) => {
-    const url = `${apiHost}/api/deliveryAgents/loginDeliveryAgent`
-    fetch(url, {
-      method: 'post',
-      body: JSON.stringify({
-        email: credential.email,
-        password: credential.password,
-      }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-      .then((response) => {
-        if (response.status === 404) {
-          dispatch({
-            type: 'DELIVERYAGENT_NOT_FOUND',
-          })
-          toast.error('Delivery agent not found with given credentials', {
-            position: 'top-right',
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: 'light',
-          })
-        } else if (response.status === 401) {
-          dispatch({
-            type: 'INVALID_PASSWORD',
-          })
-          toast.error('Invalid Password', {
-            position: 'top-right',
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: 'light',
-          })
-        } else if (response.status === 200) {
-          response.json().then((res) => {
-            dispatch({
-              type: 'DELIVERY_AGENT_LOGIN_SUCCESS',
-              payload: res.data,
-            })
-          })
-        }
-      })
-      .catch((error) => {
-        dispatch({
-          type: 'LOGIN_REQUEST_ERROR',
-        })
-      })
-  }
-}
 
 export const logout = () => {
   return (dispatch) => {

@@ -6,8 +6,6 @@ import TextField from '@mui/material/TextField'
 
 import Grid from '@mui/material/Grid'
 import Button from '@mui/material/Button'
-import Typography from '@mui/material/Typography'
-
 import { useDispatch } from 'react-redux'
 import { login } from '../../state/actions/authActions'
 
@@ -16,11 +14,11 @@ function Login(prop) {
   const handleLogin = (event) => {
     event.preventDefault()
     const data = new FormData(event.currentTarget)
-    const registrationNumber = data.get('registrationNumber')
+    const emailAddress = data.get('emailAddress')
     const password = data.get('password')
 
     const credentials = {
-      registrationNumber: registrationNumber,
+      emailAddress: emailAddress,
       password: password,
     }
 
@@ -40,7 +38,7 @@ function Login(prop) {
           Hey! Welcome
         </div>
         <div style={{ color: 'grey', fontSize: '10pt' }}>
-          Login to deliver with ease
+        "Experience seamless access to your delivery services."
         </div>
         <Box component='form' onSubmit={handleLogin} sx={{ mt: 1 }}>
           <TextField
@@ -48,9 +46,9 @@ function Login(prop) {
             variant='standard'
             required
             fullWidth
-            id='registrationNumber'
-            label='Registration Number'
-            name='registrationNumber'
+            id='emailAdress'
+            label='email address'
+            name='email address'
             autoFocus
           />
           <TextField
